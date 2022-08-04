@@ -1,0 +1,48 @@
+const ADD_USER = "user:ADD_USER";
+const GET_ALL_USERS = "user:GET_ALL_USERS";
+const DELETE_USER = "user:DELETE_USER";
+const DEACT_ACCOUNT = "user:DEACT_ACCOUNT";
+
+const ADD_ADMIN = "admin:ADD_ADMIN";
+
+const ADD_WORKBOOKS = "workbooks:ADD_WORKBOOKS";
+const GET_WORKBOOKS = "workbooks:GET_WORKBOOKS";
+const DELETE_WORKBOOKS = "workbooks:DELETE_WORKBOOKS";
+const PATCH_WORKBOOKS = "workbooks:PATCH_WORKBOOKS";
+
+const ADD_GOODS = "goods:ADD_GOODS";
+const GET_GOODS = "goods:GET_GOODS";
+const DElETE_GOODS = "goods:DElETE_GOODS";
+const UPDATE_GOODS = "goods:UPDATE_GOODS";
+
+const GET_SALES = "sales:GET_SALES";
+const ADD_SALES = "sales:ADD_SALES";
+const DELETE_SALES = "sales:DELETE_SALES";
+
+const GET_CUSTOMERS = "customers:GET_CUSTOMERS";
+const ADD_CUSTOMERS = "customers:ADD_CUSTOMERS";
+const UPDATE_CUSTOMERS = "customers:UPDATE_CUSTOMERS";
+const DELETE_CUSTOMERS = "customers:DELETE_CUSTOMERS";
+
+module.exports = {
+    ADD_ADMIN,
+    ADD_USER,
+    GET_ALL_USERS,
+    DELETE_USER,
+    DEACT_ACCOUNT,
+    ADD_WORKBOOKS,
+    GET_WORKBOOKS,
+    DELETE_WORKBOOKS,
+    PATCH_WORKBOOKS,
+    ADD_GOODS,
+    GET_GOODS,
+    DElETE_GOODS,
+    UPDATE_GOODS,
+    GET_SALES,
+    ADD_SALES,
+    DELETE_SALES,
+    GET_CUSTOMERS,
+    ADD_CUSTOMERS,
+    UPDATE_CUSTOMERS,
+    DELETE_CUSTOMERS
+}
