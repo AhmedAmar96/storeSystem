@@ -22,7 +22,6 @@ const findService = async (models, skip, limit, searchKey, fields, popul) => {
                     .skip(skip)
                     .limit(limit)
                     .populate(popul.userPath, popul.userSelect).cursor();
-
                 for (
                     let doc = await cursor.next();
                     doc != null;
@@ -31,7 +30,6 @@ const findService = async (models, skip, limit, searchKey, fields, popul) => {
                     const childData = await models.childModel.find({ modelRef: doc._id })
                         .select("numOfProduct")
                         .populate(popul.modelPath, popul.modelSelect)
-                        console.log(childData);
                     const obj = { ...doc._doc,  childData};
                     modelArr.push(obj)
                 }

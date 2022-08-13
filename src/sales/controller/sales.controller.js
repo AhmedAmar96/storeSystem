@@ -12,7 +12,7 @@ exports.getSalesHandelr = async (req, res) => {
     const { searchKey, page, size } = req.query;
     const { skip, limit } = PaginationService(page, size);
     const models = {
-        model : Sales
+        model: Sales
     }
     const popul = {
         userPath: "createdBy",
@@ -37,18 +37,27 @@ exports.getSalesHandelr = async (req, res) => {
 //Add sales
 exports.addSalesHandelr = async (req, res) => {
     try {
-        const { createdBy, customerId, goodsId } = req.body;
+        const { theNum, createdBy, customerId, goodsId } = req.body;
         const findGoods = await Goods.findOne({ _id: goodsId });
         if (findGoods) {
-            const newSales = new Sales({ createdBy, customerId, goodsId });
-            const data = await newSales.save();
-            res
-                .status(StatusCodes.CREATED)
-                .json({ message: "add success", data });
-        } else {
-            res
-                .status(StatusCodes.BAD_REQUEST)
-                .json({ message: "goods not found" })
+
+            if (findGoods.theNum <= 0) {
+                res
+                    .status(StatusCodes.BAD_REQUEST)
+                    .json({ message: "This product is not available" });
+            } else if (findGoods.theNum < theNum) {
+                res
+                    .status(StatusCodes.BAD_REQUEST)
+                    .json({ message: "The product is not available in the required quantity" });
+            } else {
+                const goodsNum = findGoods.theNum - theNum;
+                const newSales = new Sales({ createdBy, customerId, goodsId });
+                const data = await newSales.save();
+                await Goods.updateOne({ _id: findGoods._id }, { theNum: goodsNum });
+                res
+                    .status(StatusCodes.CREATED)
+                    .json({ message: "add success", data });
+            }
         }
     } catch (error) {
         res
